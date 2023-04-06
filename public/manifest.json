@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Sample Test",
+  "description": "Generate token secret",
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "windows",
+    "storage"
+  ],
+  "host_permissions": ["https://mdbootstrap.com/*", "https://www.upwork.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mdbootstrap.com/docs/standard/extended/textarea/",
+        "https://www.upwork.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "34": "./img/icon-34.png",
+      "128": "./img/icon-128.png"
+    }
+  },
+
+  "icons": {
+    "34": "./img/icon-34.png",
+    "128": "./img/icon-128.png"
+  },
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data: chrome-extension:",
+    "sandbox": "sandbox allow-scripts allow-forms"
+  }
+}
